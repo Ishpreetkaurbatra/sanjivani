@@ -3,6 +3,8 @@
 
 A mobile-first web app and installable Progressive Web App (PWA) delivering consulting-grade market intelligence across 14 modules for India's artisan collectives, SHGs, and rural MSMEs.
 
+📄 **[Read Full Project Report (PROJECT_REPORT.md)](./PROJECT_REPORT.md)**
+
 ---
 
 ## 🌟 Key Features
@@ -101,5 +103,6 @@ npx serve .
 ├── sw.js             # Service Worker for offline capability
 ├── vercel.json       # Vercel deployment config
 ├── netlify.toml      # Netlify deployment config
+├── PROJECT_REPORT.md # Comprehensive consulting-grade project report
 └── README.md         # Deployment & documentation guide
 ```
