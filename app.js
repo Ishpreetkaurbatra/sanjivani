@@ -16,8 +16,8 @@ const AppState = {
     desc: '',
     materials: '',
     giTag: '',
-    mfgType: 'Handmade',
-    price: 499,
+    mfgType: '',
+    price: '',
     monthlyCap: '',
     moq: ''
   },
@@ -28,12 +28,12 @@ const AppState = {
     email: '',
     state: '',
     district: '',
-    bizType: 'Artisan',
+    bizType: '',
     reg: {
-      gst: 'n',
-      udyam: 'n',
-      iec: 'n',
-      fssai: 'n'
+      gst: '',
+      udyam: '',
+      iec: '',
+      fssai: ''
     }
   },
   goals: [],
@@ -489,6 +489,7 @@ function validateStep(stepNum) {
     const cat = document.getElementById('input-pCat')?.value;
     const desc = document.getElementById('input-pDesc')?.value.trim();
     const price = document.getElementById('input-pPrice')?.value;
+    const mfg = document.querySelector('input[name="mfgRadio"]:checked')?.value;
     
     if (!name) {
       showToast('Please enter your product name');
@@ -505,6 +506,10 @@ function validateStep(stepNum) {
       document.getElementById('input-pDesc')?.focus();
       return false;
     }
+    if (!mfg) {
+      showToast('Please select a manufacturing mode');
+      return false;
+    }
     if (!price || isNaN(parseFloat(price)) || parseFloat(price) <= 0) {
       showToast('Please enter a valid selling price');
       document.getElementById('input-pPrice')?.focus();
@@ -516,6 +521,7 @@ function validateStep(stepNum) {
     const bName = document.getElementById('input-bName')?.value.trim();
     const bMob = document.getElementById('input-bMob')?.value.trim();
     const bState = document.getElementById('input-bState')?.value;
+    const biz = document.querySelector('input[name="bizRadio"]:checked')?.value;
     
     if (!bName) {
       showToast('Please enter your full name');
@@ -530,6 +536,10 @@ function validateStep(stepNum) {
     if (!bState) {
       showToast('Please select your state');
       document.getElementById('input-bState')?.focus();
+      return false;
+    }
+    if (!biz) {
+      showToast('Please select your entity type');
       return false;
     }
   }
@@ -555,24 +565,24 @@ function setRegToggle(btn, field, val) {
 
 function collectFormData() {
   AppState.product = {
-    name: document.getElementById('input-pName')?.value.trim() || 'Handmade Artisan Product',
-    category: document.getElementById('input-pCat')?.value || 'Handicrafts & Artware',
+    name: document.getElementById('input-pName')?.value.trim() || '',
+    category: document.getElementById('input-pCat')?.value || '',
     desc: document.getElementById('input-pDesc')?.value.trim() || '',
     materials: document.getElementById('input-pMat')?.value.trim() || '',
     giTag: document.getElementById('input-pGI')?.value.trim() || '',
-    mfgType: document.querySelector('input[name="mfgRadio"]:checked')?.value || 'Handmade',
-    price: parseFloat(document.getElementById('input-pPrice')?.value) || 500,
+    mfgType: document.querySelector('input[name="mfgRadio"]:checked')?.value || '',
+    price: parseFloat(document.getElementById('input-pPrice')?.value) || 0,
     monthlyCap: document.getElementById('input-pCap')?.value.trim() || '',
     moq: document.getElementById('input-pMOQ')?.value.trim() || ''
   };
   
-  AppState.business.name = document.getElementById('input-bName')?.value.trim() || 'Artisan';
+  AppState.business.name = document.getElementById('input-bName')?.value.trim() || '';
   AppState.business.org = document.getElementById('input-bOrg')?.value.trim() || '';
   AppState.business.mobile = document.getElementById('input-bMob')?.value.trim() || '';
   AppState.business.email = document.getElementById('input-bEmail')?.value.trim() || '';
-  AppState.business.state = document.getElementById('input-bState')?.value || 'West Bengal';
+  AppState.business.state = document.getElementById('input-bState')?.value || '';
   AppState.business.district = document.getElementById('input-bDist')?.value.trim() || '';
-  AppState.business.bizType = document.querySelector('input[name="bizRadio"]:checked')?.value || 'Artisan';
+  AppState.business.bizType = document.querySelector('input[name="bizRadio"]:checked')?.value || '';
   
   AppState.goals = Array.from(document.querySelectorAll('.goal-checkbox-item input:checked')).map(i => i.value);
 }
@@ -1491,6 +1501,32 @@ function shareOnWhatsApp() {
 }
 
 function resetAnalysis() {
+  const pName = document.getElementById('input-pName'); if (pName) pName.value = '';
+  const pCat = document.getElementById('input-pCat'); if (pCat) pCat.selectedIndex = 0;
+  const pDesc = document.getElementById('input-pDesc'); if (pDesc) pDesc.value = '';
+  const pMat = document.getElementById('input-pMat'); if (pMat) pMat.value = '';
+  const pGI = document.getElementById('input-pGI'); if (pGI) pGI.value = '';
+  const pPrice = document.getElementById('input-pPrice'); if (pPrice) pPrice.value = '';
+  const pCap = document.getElementById('input-pCap'); if (pCap) pCap.value = '';
+  const pMOQ = document.getElementById('input-pMOQ'); if (pMOQ) pMOQ.value = '';
+  document.querySelectorAll('input[name="mfgRadio"]').forEach(r => r.checked = false);
+  
+  const bName = document.getElementById('input-bName'); if (bName) bName.value = '';
+  const bOrg = document.getElementById('input-bOrg'); if (bOrg) bOrg.value = '';
+  const bMob = document.getElementById('input-bMob'); if (bMob) bMob.value = '';
+  const bEmail = document.getElementById('input-bEmail'); if (bEmail) bEmail.value = '';
+  const bState = document.getElementById('input-bState'); if (bState) bState.selectedIndex = 0;
+  const bDist = document.getElementById('input-bDist'); if (bDist) bDist.value = '';
+  document.querySelectorAll('input[name="bizRadio"]').forEach(r => r.checked = false);
+  
+  document.querySelectorAll('.reg-btn-group .tog-btn').forEach(b => b.classList.remove('is-yes', 'is-no'));
+  document.querySelectorAll('.goal-checkbox-item input').forEach(c => c.checked = false);
+  
+  AppState.product = { name: '', category: '', desc: '', materials: '', giTag: '', mfgType: '', price: '', monthlyCap: '', moq: '' };
+  AppState.business = { name: '', org: '', mobile: '', email: '', state: '', district: '', bizType: '', reg: { gst: '', udyam: '', iec: '', fssai: '' } };
+  AppState.goals = [];
+  AppState.scores = null;
+
   AppState.step = 1;
   goToStep(1);
   switchTab('analyze');
