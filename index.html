@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Market Navigator™ — Free AI Market Intelligence for Indian Artisans & MSMEs | Dream of Soul Foundation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="description" content="Free AI-powered market intelligence for India's artisans and MSMEs. Export readiness, GeM scoring, pricing strategy — consulting-grade reports in minutes.">
+  <meta name="theme-color" content="#0C0D11">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Market Navigator">
+  
+  <!-- Web App Manifest -->
+  <link rel="manifest" href="./manifest.json">
+  
+  <!-- Google Fonts & Font Awesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  
+  <!-- Mobile App CSS (STRICTLY SOLID COLORS — NO GRADIENTS) -->
+  <link rel="stylesheet" href="./app.css">
+</head>
+<body>
+
+<div class="app-host-container">
+
+  <!-- Desktop Viewport Toggle Button (Visible on screens > 768px) -->
+  <button id="viewport-toggle-btn" class="viewport-toggle-btn" onclick="toggleDesktopFrame()">
+    <i class="fas fa-expand"></i> <span>Full View</span>
+  </button>
+
+  <!-- Mobile Phone Shell / Frame -->
+  <div class="mobile-app-shell" id="mobile-app-shell">
+
+    <!-- Mobile Top Status Bar -->
+    <header class="mobile-status-bar" id="mobile-status-bar">
+      <span class="status-time" id="status-time-display">12:00</span>
+      <div class="status-icons">
+        <i class="fas fa-signal"></i>
+        <i class="fas fa-wifi"></i>
+        <i class="fas fa-battery-full" style="color:var(--gold-lt)"></i>
+      </div>
+    </header>
+
+    <!-- Mobile App Top Bar -->
+    <nav class="app-header" aria-label="Main App Navigation">
+      <div class="app-brand" onclick="switchTab('explore')">
+        <div class="brand-icon"><i class="fas fa-compass"></i></div>
+        <div class="brand-info">
+          <div class="brand-title">Market <span>Navigator™</span></div>
+          <div class="brand-sub">Dream of Soul Foundation</div>
+        </div>
+      </div>
+      <div class="header-actions">
+        <!-- Language Switcher Chip (All Indian Languages) -->
+        <button class="lang-chip-btn" id="header-lang-btn" onclick="openLangSheet()" title="Switch Language">
+          <i class="fas fa-globe"></i> <span id="current-lang-code-text">EN</span>
+        </button>
+        <!-- AI Key Status Pill -->
+        <button class="ai-status-pill unconfigured" id="ai-status-pill" onclick="openAISettingsModal()" title="Gemini AI Setup">
+          <i class="fas fa-bolt"></i> <span>AI Key</span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Scrollable Viewport Content Area -->
+    <main class="mobile-view-port" id="mobile-viewport">
+
+      <!-- ==================================================================
+           TAB 1: EXPLORE / HOME VIEW
+           ================================================================== -->
+      <section class="tab-pane active-tab" id="explore-tab-pane">
+        
+        <!-- Hero Section -->
+        <div class="mobile-hero">
+          <div class="hero-tag"><i class="fas fa-bolt"></i> AI Market Intelligence · Dream of Soul</div>
+          <h1 class="hero-heading" data-i18n="heroTitle">Your Product Deserves<br>a <em>Global Market.</em></h1>
+          <p class="hero-description" data-i18n="heroSub">
+            India's most comprehensive AI-powered market intelligence platform for artisans, SHGs, FPOs, MSMEs, and rural entrepreneurs. Get a consulting-grade market report in 3 minutes — free.
+          </p>
+          <button class="hero-primary-btn" onclick="switchTab('analyze')">
+            <i class="fas fa-compass"></i> <span data-i18n="startAnalysis">Start Free Analysis</span>
+          </button>
+          <button class="hero-secondary-btn" onclick="document.getElementById('sample-preview-anchor').scrollIntoView({behavior:'smooth'})">
+            <i class="fas fa-eye"></i> <span data-i18n="seeSample">See Sample Preview</span>
+          </button>
+
+          <!-- Key Metrics -->
+          <div class="hero-stats-grid">
+            <div class="hero-stat-box">
+              <div class="stat-num">10+</div>
+              <div class="stat-lbl">Marketplaces</div>
+            </div>
+            <div class="hero-stat-box">
+              <div class="stat-num">14</div>
+              <div class="stat-lbl">Modules</div>
+            </div>
+            <div class="hero-stat-box">
+              <div class="stat-num">Free</div>
+              <div class="stat-lbl">Forever</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Trust Badges -->
+        <div class="trust-bar-mobile">
+          <div class="trust-item"><i class="fas fa-check-circle"></i> MSME Verified</div>
+          <div class="trust-item"><i class="fas fa-check-circle"></i> NGO Darpan Reg.</div>
+          <div class="trust-item"><i class="fas fa-check-circle"></i> Startup India</div>
+          <div class="trust-item"><i class="fas fa-check-circle"></i> MSME-DFO Partner</div>
+          <div class="trust-item"><i class="fas fa-check-circle"></i> Section 8 NGO</div>
+        </div>
+
+        <!-- 14 Intelligence Modules Carousel -->
+        <div class="content-section">
+          <div class="section-label"><i class="fas fa-star"></i> Comprehensive Suite</div>
+          <h2 class="section-title">14 Intelligence Modules</h2>
+          <p class="section-subtitle">Consulting-grade intelligence customized to your exact product, craft origin, and business capacity.</p>
+
+          <div class="modules-scroll">
+            <div class="module-card">
+              <span class="mod-badge-num">01</span>
+              <div class="mod-icon-box">📊</div>
+              <h3 class="mod-title">AI Executive Summary</h3>
+              <p class="mod-desc">Consulting-grade market assessment personalized by Google Gemini AI.</p>
+            </div>
+            <div class="module-card">
+              <span class="mod-badge-num">02</span>
+              <div class="mod-icon-box">🎯</div>
+              <h3 class="mod-title">Readiness Score™</h3>
+              <p class="mod-desc">8-dimension business readiness covering documentation, export & branding.</p>
+            </div>
+            <div class="module-card">
+              <span class="mod-badge-num">03</span>
+              <div class="mod-icon-box">🏪</div>
+              <h3 class="mod-title">Marketplace Intelligence</h3>
+              <p class="mod-desc">10 platforms (Amazon, Etsy, GeM, ONDC) ranked by suitability & fees.</p>
+            </div>
+            <div class="module-card">
+              <span class="mod-badge-num">04</span>
+              <div class="mod-icon-box">🔍</div>
+              <h3 class="mod-title">Competitor Analysis</h3>
+              <p class="mod-desc">Price benchmarks, positioning gaps, and differentiation opportunities.</p>
+            </div>
+            <div class="module-card">
+              <span class="mod-badge-num">05</span>
+              <div class="mod-icon-box">👤</div>
+              <h3 class="mod-title">Buyer Persona Engine</h3>
+              <p class="mod-desc">Target audience profiles with estimated spending potential.</p>
+            </div>
+            <div class="module-card">
+              <span class="mod-badge-num">06</span>
+              <div class="mod-icon-box">💰</div>
+              <h3 class="mod-title">Pricing Intelligence</h3>
+              <p class="mod-desc">8-tier price ladder from village haat to international luxury export.</p>
+            </div>
+            <div class="module-card">
+              <span class="mod-badge-num">07</span>
+              <div class="mod-icon-box">⚠️</div>
+              <h3 class="mod-title">Risk Assessment</h3>
+              <p class="mod-desc">6-vector risk analysis with actionable mitigation strategies.</p>
+            </div>
+            <div class="module-card">
+              <span class="mod-badge-num">08</span>
+              <div class="mod-icon-box">🤝</div>
+              <h3 class="mod-title">Buyer Acquisition</h3>
+              <p class="mod-desc">Playbooks for corporate gifting, wholesale, and export buyers.</p>
+            </div>
+            <div class="module-card">
+              <span class="mod-badge-num">09</span>
+              <div class="mod-icon-box">🏅</div>
+              <h3 class="mod-title">Certification Navigator</h3>
+              <p class="mod-desc">Udyam, GST, IEC, ZED Bronze, and GI Tag roadmap.</p>
+            </div>
+            <div class="module-card">
+              <span class="mod-badge-num">10</span>
+              <div class="mod-icon-box">✈️</div>
+              <h3 class="mod-title">Export Dashboard</h3>
+              <p class="mod-desc">Country opportunity maps (US, UK, UAE, EU) & missing document checklist.</p>
+            </div>
+            <div class="module-card">
+              <span class="mod-badge-num">11</span>
+              <div class="mod-icon-box">🎪</div>
+              <h3 class="mod-title">Event Intelligence</h3>
+              <p class="mod-desc">National & international trade fairs ranked by cost and ROI.</p>
+            </div>
+            <div class="module-card">
+              <span class="mod-badge-num">12</span>
+              <div class="mod-icon-box">🏛️</div>
+              <h3 class="mod-title">Government Schemes</h3>
+              <p class="mod-desc">PM Vishwakarma, SFURTI cluster grants, and CGTMSE loans.</p>
+            </div>
+            <div class="module-card">
+              <span class="mod-badge-num">13</span>
+              <div class="mod-icon-box">📈</div>
+              <h3 class="mod-title">Income Projections</h3>
+              <p class="mod-desc">Revenue modeling comparing local, online, wholesale, and export scale.</p>
+            </div>
+            <div class="module-card">
+              <span class="mod-badge-num">14</span>
+              <div class="mod-icon-box">🚀</div>
+              <h3 class="mod-title">DoS Action Center</h3>
+              <p class="mod-desc">Direct institutional handholding from Dream of Soul Foundation.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- How It Works Section -->
+        <div class="content-section" style="padding-top:0;">
+          <div class="hiw-mobile-container">
+            <div class="section-label" style="color:var(--gold-lt)"><i class="fas fa-route"></i> Simple 3-Minute Process</div>
+            <h2 class="section-title" style="color:#FFFFFF;margin-bottom:16px;">How It Works</h2>
+            
+            <div class="hiw-mobile-step">
+              <div class="step-circle">1</div>
+              <div class="step-content">
+                <h4>Describe Your Product</h4>
+                <p>Name, craft category, raw materials, price, and monthly production capacity.</p>
+              </div>
+            </div>
+            <div class="hiw-mobile-step">
+              <div class="step-circle">2</div>
+              <div class="step-content">
+                <h4>Share Your Business Profile</h4>
+                <p>Location, registration status (GST, Udyam, IEC), and entity type.</p>
+              </div>
+            </div>
+            <div class="hiw-mobile-step">
+              <div class="step-circle">3</div>
+              <div class="step-content">
+                <h4>Select Growth Goals</h4>
+                <p>Choose Amazon, Etsy, GeM portal, corporate gifting, or overseas export.</p>
+              </div>
+            </div>
+            <div class="hiw-mobile-step">
+              <div class="step-circle">4</div>
+              <div class="step-content">
+                <h4>Get Instant AI Report</h4>
+                <p>A full 14-module consulting report ready to view, share, or download as PDF.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sample Report Preview -->
+        <div class="content-section" id="sample-preview-anchor" style="padding-top:0;">
+          <div class="section-label"><i class="fas fa-file-alt"></i> Interactive Preview</div>
+          <h2 class="section-title">Inside a Real Report</h2>
+          <p class="section-subtitle">Sample based on Handcrafted Madhubani Art Textiles</p>
+
+          <div class="preview-tabs-row">
+            <button class="prev-tab-chip active" onclick="showPreviewTab(0, this)">📊 Opportunity</button>
+            <button class="prev-tab-chip" onclick="showPreviewTab(1, this)">🏪 Marketplaces</button>
+            <button class="prev-tab-chip" onclick="showPreviewTab(2, this)">💰 Pricing</button>
+            <button class="prev-tab-chip" onclick="showPreviewTab(3, this)">✈️ Export</button>
+          </div>
+
+          <div class="preview-card-mobile" id="preview-display-card">
+            <div style="font-size:11px;font-weight:700;color:var(--gold-dk);text-transform:uppercase;margin-bottom:8px;">
+              Module 01: Product Opportunity Score (Madhubani Cushion Cover)
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--light-border);">
+              <span style="font-size:13px;font-weight:600;">Global Demand Score</span>
+              <strong style="color:var(--gold-dk);font-family:'JetBrains Mono',monospace;">88/100</strong>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--light-border);">
+              <span style="font-size:13px;font-weight:600;">Export Potential</span>
+              <strong style="color:var(--sky);font-family:'JetBrains Mono',monospace;">92/100</strong>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--light-border);">
+              <span style="font-size:13px;font-weight:600;">Scalability Index</span>
+              <strong style="color:var(--violet);font-family:'JetBrains Mono',monospace;">76/100</strong>
+            </div>
+            <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 0;">
+              <span style="font-size:13px;font-weight:600;">Competition Intensity</span>
+              <strong style="color:var(--green);font-family:'JetBrains Mono',monospace;">52/100 (Low)</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonials -->
+        <div class="content-section" style="padding-top:0;">
+          <div class="section-label"><i class="fas fa-quote-left"></i> Verified Stories</div>
+          <h2 class="section-title">Trusted by 500+ Artisans</h2>
+          <p class="section-subtitle">Real experiences from SHG members and MSMEs across India</p>
+
+          <div class="testimonial-card">
+            <div class="testi-stars">★★★★★</div>
+            <div class="testi-quote">"The export readiness section alone saved us months. We knew exactly what documents to get before approaching any foreign buyer."</div>
+            <div class="testi-author">
+              <div class="testi-av">K</div>
+              <div>
+                <div class="testi-name">Kamla Devi</div>
+                <div class="testi-role">SHG Leader, Mithila Craft, Bihar</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testi-stars">★★★★★</div>
+            <div class="testi-quote">"We were only selling locally. The marketplace report showed us GeM portal — we got our first government order of ₹78,000 within 45 days."</div>
+            <div class="testi-author">
+              <div class="testi-av">A</div>
+              <div>
+                <div class="testi-name">Anjali Oraon</div>
+                <div class="testi-role">Artisan Collective, Jharkhand</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card">
+            <div class="testi-stars">★★★★★</div>
+            <div class="testi-quote">"The pricing intelligence engine showed me I was underpricing by 3x on international channels. We restructured our entire catalog!"</div>
+            <div class="testi-author">
+              <div class="testi-av">S</div>
+              <div>
+                <div class="testi-name">Sunita Sharma</div>
+                <div class="testi-role">MSME Owner, Jaipur, Rajasthan</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- E-E-A-T & Foundation Credentials -->
+        <div class="content-section" style="background-color:#11131A;color:#FFFFFF;margin-bottom:20px;border-top:1.5px solid var(--dark-border);">
+          <div class="section-label" style="color:var(--gold-lt)"><i class="fas fa-heart"></i> Women-Led Section 8 NGO</div>
+          <h2 class="section-title" style="color:#FFFFFF;">Built on the Ground. For the Ground.</h2>
+          <p style="font-size:12.5px;color:#A5ADC0;line-height:1.7;margin-bottom:14px;">
+            <strong>Dream of Soul Foundation</strong> is a women-led Section 8 NGO founded in Siliguri, West Bengal, building free digital and market infrastructure for India's artisan economy.
+          </p>
+          <div style="font-size:11px;color:#8F95A6;line-height:1.8;background-color:#171A24;padding:12px;border-radius:var(--r-sm);border:1px solid var(--dark-border);">
+            <strong>Registrations:</strong><br>
+            • CIN: U88900WR2026NPL292771<br>
+            • NGO Darpan: WB/2026/1034415<br>
+            • MSME: UDYAM-WB-09-0037824<br>
+            • 12A & 80G Certified · CSR-1 Registered<br>
+            • MSME-DFO Partner (West Bengal & Bihar)
+          </div>
+        </div>
+
+        <!-- FAQ Section -->
+        <div class="content-section" style="padding-top:0;">
+          <div class="section-label"><i class="fas fa-question-circle"></i> FAQ</div>
+          <h2 class="section-title">Frequently Asked Questions</h2>
+          
+          <div style="display:flex;flex-direction:column;gap:10px;">
+            <details style="background:#FFFFFF;border:1.5px solid var(--light-border);border-radius:var(--r-sm);padding:12px;" open>
+              <summary style="font-size:13px;font-weight:700;color:var(--ink);cursor:pointer;">Is Market Navigator™ completely free?</summary>
+              <p style="font-size:12px;color:var(--charcoal);margin-top:8px;line-height:1.6;">
+                Yes. Built by Dream of Soul Foundation, a Section 8 NGO. There are no fees or hidden costs for artisans, SHGs, or MSMEs.
+              </p>
+            </details>
+            <details style="background:#FFFFFF;border:1.5px solid var(--light-border);border-radius:var(--r-sm);padding:12px;">
+              <summary style="font-size:13px;font-weight:700;color:var(--ink);cursor:pointer;">What is GeM and how does this tool help?</summary>
+              <p style="font-size:12px;color:var(--charcoal);margin-top:8px;line-height:1.6;">
+                GeM (Government e-Marketplace) is India's official public procurement portal. The tool analyzes your product category, generates a readiness score, and details how to win government tenders.
+              </p>
+            </details>
+            <details style="background:#FFFFFF;border:1.5px solid var(--light-border);border-radius:var(--r-sm);padding:12px;">
+              <summary style="font-size:13px;font-weight:700;color:var(--ink);cursor:pointer;">Can women entrepreneurs and SHGs use this?</summary>
+              <p style="font-size:12px;color:var(--charcoal);margin-top:8px;line-height:1.6;">
+                Absolutely. It is specially optimized for artisan collectives, weavers, women SHGs, and rural producers seeking domestic and overseas growth.
+              </p>
+            </details>
+          </div>
+        </div>
+
+        <!-- Bottom CTA -->
+        <div class="content-section" style="padding-top:0;text-align:center;">
+          <button class="hero-primary-btn" onclick="switchTab('analyze')">
+            <i class="fas fa-brain"></i> <span>Build Your Market Intelligence Report</span>
+          </button>
+        </div>
+
+      </section>
+
+      <!-- ==================================================================
+           TAB 2: ANALYZER / 3-STEP FORM VIEW
+           ================================================================== -->
+      <section class="tab-pane" id="analyze-tab-pane">
+        
+        <div class="analyzer-header">
+          <div class="hero-tag"><i class="fas fa-brain"></i> Intelligence Engine</div>
+          <h2 style="font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:700;">Build Your Market Report</h2>
+          <p style="font-size:12px;color:#8C92A4;margin-top:4px;">3 simple steps · Consulting-grade output</p>
+        </div>
+
+        <!-- 3-Step Progress Tracker -->
+        <div class="form-step-tracker">
+          <div class="step-indicator-item active" id="step-indicator-1">
+            <div class="step-dot">1</div>
+            <span>Product</span>
+          </div>
+          <div class="step-indicator-item" id="step-indicator-2">
+            <div class="step-dot">2</div>
+            <span>Business</span>
+          </div>
+          <div class="step-indicator-item" id="step-indicator-3">
+            <div class="step-dot">3</div>
+            <span>Goals</span>
+          </div>
+        </div>
+
+        <!-- Form Wrapper -->
+        <div class="form-body-container" id="form-flow-wrapper">
+
+          <!-- STEP 1: PRODUCT INFO -->
+          <div class="form-step-section" id="form-step-1">
+            <div class="form-card">
+              <div class="form-card-title"><i class="fas fa-box"></i> Product Specifications</div>
+              
+              <div class="input-field-group">
+                <label class="input-label" for="input-pName">Product Name <span class="req-mark">*</span></label>
+                <input type="text" id="input-pName" class="input-control" placeholder="e.g. Handwoven Madhubani Cushion Cover" value="Handcrafted Madhubani Textile Art">
+              </div>
+
+              <div class="input-field-group">
+                <label class="input-label" for="input-pCat">Product Category <span class="req-mark">*</span></label>
+                <select id="input-pCat" class="input-control">
+                  <option value="">Select category...</option>
+                  <option selected>Handicrafts & Artware</option>
+                  <option>Handloom & Textiles</option>
+                  <option>Food & Agri Products</option>
+                  <option>Jewellery & Accessories</option>
+                  <option>Home Décor & Furnishings</option>
+                  <option>Organic & Natural Products</option>
+                  <option>Bamboo & Cane Products</option>
+                  <option>Pottery & Ceramics</option>
+                  <option>Wooden Crafts</option>
+                  <option>Leather & Jute Products</option>
+                  <option>Eco-Friendly & Sustainable</option>
+                  <option>Corporate Gifting Products</option>
+                  <option>Beauty & Wellness</option>
+                  <option>Paper & Stationery</option>
+                </select>
+              </div>
+
+              <div class="input-field-group">
+                <label class="input-label" for="input-pDesc">Product Description <span class="req-mark">*</span></label>
+                <textarea id="input-pDesc" class="input-control" placeholder="Describe the materials, craftsmanship, artisan tradition, and story behind it...">Handcrafted cushion covers featuring authentic Madhubani folk art motifs hand-painted with natural dyes by rural women artisans on pure khadi cotton.</textarea>
+              </div>
+
+              <div class="form-grid-2">
+                <div class="input-field-group">
+                  <label class="input-label" for="input-pMat">Raw Materials</label>
+                  <input type="text" id="input-pMat" class="input-control" placeholder="e.g. Khadi cotton, natural dyes" value="Khadi cotton, natural herbal pigments">
+                </div>
+                <div class="input-field-group">
+                  <label class="input-label" for="input-pGI">GI Tag / Origin</label>
+                  <input type="text" id="input-pGI" class="input-control" placeholder="e.g. Madhubani Painting" value="Mithila Madhubani Art">
+                </div>
+              </div>
+            </div>
+
+            <div class="form-card">
+              <div class="form-card-title"><i class="fas fa-tags"></i> Pricing & Capacity</div>
+
+              <div class="input-field-group">
+                <label class="input-label">Manufacturing Mode <span class="req-mark">*</span></label>
+                <div class="radio-pill-group">
+                  <div class="radio-pill-item">
+                    <input type="radio" name="mfgRadio" id="mfg-1" value="Handmade" checked>
+                    <label class="radio-pill-label" for="mfg-1">🤲 Handmade</label>
+                  </div>
+                  <div class="radio-pill-item">
+                    <input type="radio" name="mfgRadio" id="mfg-2" value="Machine Made">
+                    <label class="radio-pill-label" for="mfg-2">⚙️ Machine</label>
+                  </div>
+                  <div class="radio-pill-item">
+                    <input type="radio" name="mfgRadio" id="mfg-3" value="Hybrid">
+                    <label class="radio-pill-label" for="mfg-3">🔄 Hybrid</label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="input-field-group">
+                <label class="input-label" for="input-pPrice">Local Selling Price (₹) <span class="req-mark">*</span></label>
+                <input type="number" id="input-pPrice" class="input-control" placeholder="e.g. 599" value="650">
+              </div>
+
+              <div class="form-grid-2">
+                <div class="input-field-group">
+                  <label class="input-label" for="input-pCap">Monthly Output</label>
+                  <input type="text" id="input-pCap" class="input-control" placeholder="e.g. 250 pieces" value="200 pieces">
+                </div>
+                <div class="input-field-group">
+                  <label class="input-label" for="input-pMOQ">Wholesale MOQ</label>
+                  <input type="text" id="input-pMOQ" class="input-control" placeholder="e.g. 25 units" value="20 units">
+                </div>
+              </div>
+            </div>
+
+            <div class="form-action-row">
+              <button type="button" class="btn-primary-action" onclick="goToStep(2)">
+                <span>Continue to Business Profile</span> <i class="fas fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP 2: BUSINESS PROFILE -->
+          <div class="form-step-section" id="form-step-2" style="display:none;">
+            <div class="form-card">
+              <div class="form-card-title"><i class="fas fa-user-circle"></i> Contact & Location</div>
+
+              <div class="input-field-group">
+                <label class="input-label" for="input-bName">Full Name <span class="req-mark">*</span></label>
+                <input type="text" id="input-bName" class="input-control" placeholder="Your full name" value="Kamla Devi">
+              </div>
+
+              <div class="input-field-group">
+                <label class="input-label" for="input-bOrg">Business / SHG Name</label>
+                <input type="text" id="input-bOrg" class="input-control" placeholder="e.g. Mithila Craft Collective" value="Mithila Women Artisan Collective">
+              </div>
+
+              <div class="form-grid-2">
+                <div class="input-field-group">
+                  <label class="input-label" for="input-bMob">Mobile Number <span class="req-mark">*</span></label>
+                  <input type="tel" id="input-bMob" class="input-control" placeholder="+91 XXXXX XXXXX" value="9876543210">
+                </div>
+                <div class="input-field-group">
+                  <label class="input-label" for="input-bEmail">Email Address</label>
+                  <input type="email" id="input-bEmail" class="input-control" placeholder="you@domain.com" value="artisan@dreamofsoul.org">
+                </div>
+              </div>
+
+              <div class="form-grid-2">
+                <div class="input-field-group">
+                  <label class="input-label" for="input-bState">State <span class="req-mark">*</span></label>
+                  <select id="input-bState" class="input-control">
+                    <option value="">Select State...</option>
+                    <option selected>Bihar</option>
+                    <option>West Bengal</option>
+                    <option>Jharkhand</option>
+                    <option>Odisha</option>
+                    <option>Uttar Pradesh</option>
+                    <option>Rajasthan</option>
+                    <option>Gujarat</option>
+                    <option>Madhya Pradesh</option>
+                    <option>Maharashtra</option>
+                    <option>Karnataka</option>
+                    <option>Tamil Nadu</option>
+                    <option>Kerala</option>
+                    <option>Assam</option>
+                    <option>Delhi</option>
+                    <option>Other State</option>
+                  </select>
+                </div>
+                <div class="input-field-group">
+                  <label class="input-label" for="input-bDist">District</label>
+                  <input type="text" id="input-bDist" class="input-control" placeholder="e.g. Madhubani" value="Madhubani">
+                </div>
+              </div>
+            </div>
+
+            <div class="form-card">
+              <div class="form-card-title"><i class="fas fa-building"></i> Entity Type <span class="req-mark">*</span></div>
+              <div class="radio-pill-group">
+                <div class="radio-pill-item">
+                  <input type="radio" name="bizRadio" id="biz-1" value="Artisan">
+                  <label class="radio-pill-label" for="biz-1">🪆 Individual</label>
+                </div>
+                <div class="radio-pill-item">
+                  <input type="radio" name="bizRadio" id="biz-2" value="SHG" checked>
+                  <label class="radio-pill-label" for="biz-2">👩‍👩‍👧 SHG</label>
+                </div>
+                <div class="radio-pill-item">
+                  <input type="radio" name="bizRadio" id="biz-3" value="MSME">
+                  <label class="radio-pill-label" for="biz-3">🏭 MSME</label>
+                </div>
+                <div class="radio-pill-item">
+                  <input type="radio" name="bizRadio" id="biz-4" value="NGO">
+                  <label class="radio-pill-label" for="biz-4">🏛️ NGO</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-card">
+              <div class="form-card-title"><i class="fas fa-certificate"></i> Government Registrations</div>
+
+              <div class="reg-toggle-card">
+                <div>
+                  <div class="reg-name">GST Registration</div>
+                  <div class="reg-desc">Goods & Services Tax</div>
+                </div>
+                <div class="reg-btn-group">
+                  <button type="button" class="tog-btn is-yes" onclick="setRegToggle(this,'gst','y')">Yes</button>
+                  <button type="button" class="tog-btn" onclick="setRegToggle(this,'gst','n')">No</button>
+                </div>
+              </div>
+
+              <div class="reg-toggle-card">
+                <div>
+                  <div class="reg-name">Udyam Registration</div>
+                  <div class="reg-desc">Ministry of MSME</div>
+                </div>
+                <div class="reg-btn-group">
+                  <button type="button" class="tog-btn is-yes" onclick="setRegToggle(this,'udyam','y')">Yes</button>
+                  <button type="button" class="tog-btn" onclick="setRegToggle(this,'udyam','n')">No</button>
+                </div>
+              </div>
+
+              <div class="reg-toggle-card">
+                <div>
+                  <div class="reg-name">IEC Code</div>
+                  <div class="reg-desc">Import Export License</div>
+                </div>
+                <div class="reg-btn-group">
+                  <button type="button" class="tog-btn" onclick="setRegToggle(this,'iec','y')">Yes</button>
+                  <button type="button" class="tog-btn is-no" onclick="setRegToggle(this,'iec','n')">No</button>
+                </div>
+              </div>
+
+              <div class="reg-toggle-card">
+                <div>
+                  <div class="reg-name">FSSAI License</div>
+                  <div class="reg-desc">Food safety (if applicable)</div>
+                </div>
+                <div class="reg-btn-group">
+                  <button type="button" class="tog-btn" onclick="setRegToggle(this,'fssai','y')">Yes</button>
+                  <button type="button" class="tog-btn is-no" onclick="setRegToggle(this,'fssai','n')">No</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-action-row">
+              <button type="button" class="btn-back-action" onclick="goToStep(1)">
+                <i class="fas fa-arrow-left"></i> <span>Back</span>
+              </button>
+              <button type="button" class="btn-primary-action" onclick="goToStep(3)">
+                <span>Continue to Goals</span> <i class="fas fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- STEP 3: GROWTH GOALS -->
+          <div class="form-step-section" id="form-step-3" style="display:none;">
+            <div class="form-card">
+              <div class="form-card-title"><i class="fas fa-bullseye"></i> Where Do You Want to Grow?</div>
+              <p style="font-size:12px;color:var(--muted);margin-bottom:14px;">Select all channels of interest to calculate targeted suitability and revenue roadmap.</p>
+
+              <div class="goals-select-grid">
+                <div class="goal-checkbox-item">
+                  <input type="checkbox" id="g-amazon" value="Amazon" checked>
+                  <label class="goal-checkbox-label" for="g-amazon">
+                    <span class="goal-icon">📦</span>
+                    <span class="goal-title">Amazon India</span>
+                  </label>
+                </div>
+                <div class="goal-checkbox-item">
+                  <input type="checkbox" id="g-etsy" value="Etsy" checked>
+                  <label class="goal-checkbox-label" for="g-etsy">
+                    <span class="goal-icon">🧶</span>
+                    <span class="goal-title">Etsy Global</span>
+                  </label>
+                </div>
+                <div class="goal-checkbox-item">
+                  <input type="checkbox" id="g-gem" value="GeM" checked>
+                  <label class="goal-checkbox-label" for="g-gem">
+                    <span class="goal-icon">🏛️</span>
+                    <span class="goal-title">GeM Portal</span>
+                  </label>
+                </div>
+                <div class="goal-checkbox-item">
+                  <input type="checkbox" id="g-corp" value="Corporate Gifting" checked>
+                  <label class="goal-checkbox-label" for="g-corp">
+                    <span class="goal-icon">🎁</span>
+                    <span class="goal-title">Corporate Gifts</span>
+                  </label>
+                </div>
+                <div class="goal-checkbox-item">
+                  <input type="checkbox" id="g-export" value="Export" checked>
+                  <label class="goal-checkbox-label" for="g-export">
+                    <span class="goal-icon">✈️</span>
+                    <span class="goal-title">Direct Export</span>
+                  </label>
+                </div>
+                <div class="goal-checkbox-item">
+                  <input type="checkbox" id="g-ondc" value="ONDC" checked>
+                  <label class="goal-checkbox-label" for="g-ondc">
+                    <span class="goal-icon">📱</span>
+                    <span class="goal-title">ONDC Network</span>
+                  </label>
+                </div>
+                <div class="goal-checkbox-item">
+                  <input type="checkbox" id="g-wholesale" value="Wholesale">
+                  <label class="goal-checkbox-label" for="g-wholesale">
+                    <span class="goal-icon">🏢</span>
+                    <span class="goal-title">B2B Wholesale</span>
+                  </label>
+                </div>
+                <div class="goal-checkbox-item">
+                  <input type="checkbox" id="g-grants" value="Funding">
+                  <label class="goal-checkbox-label" for="g-grants">
+                    <span class="goal-icon">💰</span>
+                    <span class="goal-title">Govt Grants</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-action-row">
+              <button type="button" class="btn-back-action" onclick="goToStep(2)">
+                <i class="fas fa-arrow-left"></i> <span>Back</span>
+              </button>
+              <button type="button" class="btn-primary-action" onclick="startFullAnalysis()">
+                <i class="fas fa-brain"></i> <span>Generate Market Report</span>
+              </button>
+            </div>
+          </div>
+
+        </div><!-- end form-flow-wrapper -->
+
+        <!-- Loading State during Analysis -->
+        <div class="analyzing-container" id="analyzing-screen">
+          <div class="analyzing-orb"><i class="fas fa-compass"></i></div>
+          <h3 class="analyzing-title">Navigating Market Universe</h3>
+          <p class="analyzing-subtitle">Generating consulting-grade intelligence...</p>
+          
+          <div class="loading-steps-list">
+            <div class="loading-step-row is-running" id="loading-row-1">
+              <i class="fas fa-circle-notch fa-spin"></i> Analyzing product & craft origin...
+            </div>
+            <div class="loading-step-row" id="loading-row-2">
+              <i class="far fa-circle"></i> Calculating opportunity & readiness scores...
+            </div>
+            <div class="loading-step-row" id="loading-row-3">
+              <i class="far fa-circle"></i> Ranking 10 marketplaces (Amazon, Etsy, GeM)...
+            </div>
+            <div class="loading-step-row" id="loading-row-4">
+              <i class="far fa-circle"></i> Assessing competitor price benchmarks...
+            </div>
+            <div class="loading-step-row" id="loading-row-5">
+              <i class="far fa-circle"></i> Evaluating export compliance & AD code status...
+            </div>
+            <div class="loading-step-row" id="loading-row-6">
+              <i class="far fa-circle"></i> Matching government schemes & subsidies...
+            </div>
+            <div class="loading-step-row" id="loading-row-7">
+              <i class="far fa-circle"></i> Synthesizing 12-month growth roadmap...
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ==================================================================
+           TAB 3: REPORT VIEW (14 FULL MODULES)
+           ================================================================== -->
+      <section class="tab-pane" id="report-tab-pane">
+        
+        <div class="report-view-container">
+
+          <!-- Sticky Action Toolbar -->
+          <div class="report-actions-bar">
+            <button class="rep-action-btn" onclick="resetAnalysis()">
+              <i class="fas fa-redo"></i> <span>New</span>
+            </button>
+            <button class="rep-action-btn" onclick="exportReportPDF()">
+              <i class="fas fa-download"></i> <span>PDF</span>
+            </button>
+            <button class="rep-action-btn btn-gold" onclick="shareOnWhatsApp()">
+              <i class="fab fa-whatsapp"></i> <span>Share</span>
+            </button>
+          </div>
+
+          <!-- Printable Cover / Top Banner -->
+          <div class="report-banner-card">
+            <div class="report-badge-top"><i class="fas fa-compass"></i> Market Navigator™ Report</div>
+            <h1 class="report-banner-title" id="report-product-title">Handcrafted Textile Art — Market Report</h1>
+            <div class="report-banner-meta" id="report-product-meta">Kamla Devi · Bihar · Generated October 2026</div>
+
+            <div class="report-quick-metrics" id="report-quick-metrics-grid">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+
+          <!-- MODULE 01: Product Opportunity Score -->
+          <div class="rep-section-header">
+            <div class="rep-section-icon"><i class="fas fa-chart-pie"></i></div>
+            <div class="rep-section-text">
+              <h3>01. Opportunity Score</h3>
+              <p>AI-calculated viability across 4 core dimensions</p>
+            </div>
+          </div>
+          <div class="scores-grid-mobile" id="report-opportunity-rings"></div>
+
+          <!-- MODULE 02: AI Executive Summary -->
+          <div class="rep-section-header">
+            <div class="rep-section-icon"><i class="fas fa-file-alt"></i></div>
+            <div class="rep-section-text">
+              <h3>02. Executive Assessment</h3>
+              <p>Consulting-grade strategic evaluation</p>
+            </div>
+          </div>
+          <div id="report-exec-summary-box"></div>
+
+          <!-- MODULE 03: Readiness Score (8 Dimensions) -->
+          <div class="rep-section-header">
+            <div class="rep-section-icon"><i class="fas fa-tachometer-alt"></i></div>
+            <div class="rep-section-text">
+              <h3>03. Business Readiness</h3>
+              <p>8-dimension enterprise gap analysis</p>
+            </div>
+          </div>
+          <div id="report-readiness-box"></div>
+
+          <!-- MODULE 04: Marketplace Intelligence (10 Platforms) -->
+          <div class="rep-section-header">
+            <div class="rep-section-icon"><i class="fas fa-store"></i></div>
+            <div class="rep-section-text">
+              <h3>04. Marketplace Intelligence</h3>
+              <p>10 platforms ranked by suitability & fees</p>
+            </div>
+          </div>
+          <div id="report-marketplaces-box"></div>
+
+          <!-- MODULE 05: Competitor Intelligence -->
+          <div class="rep-section-header">
+            <div class="rep-section-icon"><i class="fas fa-chess"></i></div>
+            <div class="rep-section-text">
+              <h3>05. Competitor Intelligence</h3>
+              <p>Price benchmarks & differentiation gaps</p>
+            </div>
+          </div>
+          <div id="report-competitors-box"></div>
+
+          <!-- MODULE 06: Buyer Personas -->
+          <div class="rep-section-header">
+            <div class="rep-section-icon"><i class="fas fa-users"></i></div>
+            <div class="rep-section-text">
+              <h3>06. Target Buyer Personas</h3>
+              <p>Audience profiles & spending potential</p>
+            </div>
+          </div>
+          <div id="report-personas-box"></div>
+
+          <!-- MODULE 07: Pricing Ladder -->
+          <div class="rep-section-header">
+            <div class="rep-section-icon"><i class="fas fa-tags"></i></div>
+            <div class="rep-section-text">
+              <h3>07. Pricing Intelligence</h3>
+              <p>8-tier price ladder across distribution channels</p>
+            </div>
+          </div>
+          <div id="report-pricing-box"></div>
+
+          <!-- MODULE 08: Risk Assessment -->
+          <div class="rep-section-header">
+            <div class="rep-section-icon"><i class="fas fa-shield-alt"></i></div>
+            <div class="rep-section-text">
+              <h3>08. Risk & Mitigation</h3>
+              <p>6-vector analysis with prevention plans</p>
+            </div>
+          </div>
+          <div id="report-risks-box"></div>
+
+          <!-- MODULE 09: Buyer Acquisition Strategy -->
+          <div class="rep-section-header">
+            <div class="rep-section-icon"><i class="fas fa-handshake"></i></div>
+            <div class="rep-section-text">
+              <h3>09. Buyer Acquisition</h3>
+              <p>Practical outreach playbooks for corporate and export</p>
+            </div>
+          </div>
+          <div id="report-strategy-box"></div>
+
+          <!-- MODULE 10: Certification Navigator -->
+          <div class="rep-section-header">
+            <div class="rep-section-icon"><i class="fas fa-award"></i></div>
+            <div class="rep-section-text">
+              <h3>10. Certification Navigator</h3>
+              <p>Required, recommended & future quality marks</p>
+            </div>
+          </div>
+          <div id="report-certs-box"></div>
+
+          <!-- MODULE 11: Export Dashboard -->
+          <div class="rep-section-header">
+            <div class="rep-section-icon"><i class="fas fa-globe-americas"></i></div>
+            <div class="rep-section-text">
+              <h3>11. Export Readiness</h3>
+              <p>Country benchmarks & customs checklist</p>
+            </div>
+          </div>
+          <div id="report-export-box"></div>
+
+          <!-- MODULE 12: Event Intelligence -->
+          <div class="rep-section-header">
+            <div class="rep-section-icon"><i class="fas fa-calendar-alt"></i></div>
+            <div class="rep-section-text">
+              <h3>12. Trade Fair Intelligence</h3>
+              <p>National fairs & year-round digital channels</p>
+            </div>
+          </div>
+          <div id="report-events-box"></div>
+
+          <!-- MODULE 13: Government Schemes -->
+          <div class="rep-section-header">
+            <div class="rep-section-icon"><i class="fas fa-landmark"></i></div>
+            <div class="rep-section-text">
+              <h3>13. Government Scheme Synergy</h3>
+              <p>Direct subsidies, grants & credit guarantees</p>
+            </div>
+          </div>
+          <div id="report-schemes-box"></div>
+
+          <!-- MODULE 14: Revenue Projection & Roadmap -->
+          <div class="rep-section-header">
+            <div class="rep-section-icon"><i class="fas fa-chart-line"></i></div>
+            <div class="rep-section-text">
+              <h3>14. Scale & 12-Month Roadmap</h3>
+              <p>Revenue potential & step-by-step milestones</p>
+            </div>
+          </div>
+          <div style="background:#FFFFFF;border:1.5px solid var(--light-border);border-radius:var(--r-md);padding:16px;margin-bottom:14px;">
+            <div style="font-size:11px;font-weight:700;color:var(--gold-dk);text-transform:uppercase;margin-bottom:8px">Monthly Revenue Growth Projection (₹)</div>
+            <canvas id="revenue-projection-canvas"></canvas>
+          </div>
+          <div class="roadmap-timeline-mobile" id="report-roadmap-box"></div>
+
+          <!-- Investor Mode & Action Center -->
+          <div id="report-investor-box"></div>
+          
+          <div class="rep-section-header">
+            <div class="rep-section-icon"><i class="fas fa-rocket"></i></div>
+            <div class="rep-section-text">
+              <h3>Dream of Soul Action Center</h3>
+              <p>Connect with expert NGO advisors for free support</p>
+            </div>
+          </div>
+          <div class="action-center-grid" id="report-action-center-box"></div>
+
+        </div><!-- end report-view-container -->
+
+      </section>
+
+      <!-- ==================================================================
+           TAB 4: AI ADVISOR CHAT
+           ================================================================== -->
+      <section class="tab-pane" id="advisor-tab-pane">
+        
+        <div class="ai-advisor-container">
+          <!-- Chat Header -->
+          <div class="advisor-header-bar">
+            <div class="advisor-info-group">
+              <div class="advisor-avatar-box"><i class="fas fa-brain"></i></div>
+              <div>
+                <div class="advisor-name-text">Market Navigator AI</div>
+                <div class="advisor-status-text"><i class="fas fa-circle" style="font-size:7px;"></i> Online & Ready</div>
+              </div>
+            </div>
+            <button class="lang-chip-btn" onclick="openLangSheet()" title="Switch Language">
+              <i class="fas fa-language"></i>
+            </button>
+          </div>
+
+          <!-- Chat Messages Area -->
+          <div class="advisor-chat-log" id="advisor-chat-log">
+            <div class="chat-bubble bot">
+              Namaste! I am your <strong>Market Navigator AI Advisor</strong> powered by Dream of Soul Foundation.<br><br>
+              I can answer any question about:<br>
+              • How to apply for <strong>PM Vishwakarma</strong> & <strong>SFURTI</strong><br>
+              • Getting your <strong>IEC code</strong> & <strong>AD code</strong> for export<br>
+              • Pricing your products for US/UK Etsy buyers<br>
+              • Listing on <strong>GeM Portal</strong> to sell to government buyers<br><br>
+              What would you like to explore today?
+            </div>
+          </div>
+
+          <!-- Suggested Preset Prompts -->
+          <div class="advisor-suggested-prompts">
+            <button class="prompt-pill-btn" onclick="sendPresetPrompt('How do I apply for PM Vishwakarma toolkit subsidy?')">PM Vishwakarma toolkit?</button>
+            <button class="prompt-pill-btn" onclick="sendPresetPrompt('What is the step-by-step process to get an IEC code?')">How to get IEC Code?</button>
+            <button class="prompt-pill-btn" onclick="sendPresetPrompt('How should I price my handicraft for US buyers on Etsy?')">US Etsy pricing?</button>
+            <button class="prompt-pill-btn" onclick="sendPresetPrompt('How can our SHG register on GeM portal?')">Register on GeM?</button>
+          </div>
+
+          <!-- Chat Input Bar -->
+          <div class="advisor-input-bar">
+            <input type="text" id="chat-text-input" class="chat-input-field" placeholder="Ask anything about selling your craft..." data-i18n-ph="chatPlaceholder">
+            <button class="chat-send-btn" id="chat-send-btn" aria-label="Send message">
+              <i class="fas fa-paper-plane"></i>
+            </button>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ==================================================================
+           TAB 5: SETTINGS & CONFIGURATION
+           ================================================================== -->
+      <section class="tab-pane" id="settings-tab-pane">
+        
+        <div class="settings-view-container">
+          <div class="section-label"><i class="fas fa-cog"></i> Preferences</div>
+          <h2 class="section-title">App Settings</h2>
+          <p class="section-subtitle">Manage AI connectivity and app options</p>
+
+          <!-- AI API Key Management Group -->
+          <div class="settings-card-group">
+            <div class="settings-group-title"><i class="fas fa-key"></i> Google Gemini AI Configuration</div>
+            
+            <div style="padding:16px;">
+              <p style="font-size:12.5px;color:var(--charcoal);line-height:1.6;margin-bottom:12px;">
+                Add your <strong>Google Gemini API Key</strong> to enable real-time neural report synthesis and interactive AI advisor chat in your deployed app.
+              </p>
+              
+              <div class="input-field-group">
+                <label class="input-label" for="settings-api-key-input">Gemini API Key</label>
+                <input type="password" id="settings-api-key-input" class="input-control" placeholder="AIzaSy...">
+              </div>
+
+              <div style="display:flex;gap:10px;margin-top:12px;">
+                <button class="hero-primary-btn" style="padding:10px 16px;font-size:13px;" onclick="saveGeminiKey()">
+                  <i class="fas fa-save"></i> Save Key
+                </button>
+                <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener" class="hero-secondary-btn" style="margin-top:0;padding:10px 14px;font-size:12px;text-decoration:none;">
+                  <i class="fas fa-external-link-alt"></i> Get Free Key
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Language Settings -->
+          <div class="settings-card-group">
+            <div class="settings-group-title"><i class="fas fa-language"></i> Language Selection</div>
+            <div class="settings-row-item" onclick="openLangSheet()" style="cursor:pointer;">
+              <div class="settings-info-text">
+                <div class="settings-main-label">App Language</div>
+                <div class="settings-sub-label">Select from 22 Indian regional languages</div>
+              </div>
+              <i class="fas fa-chevron-right" style="color:var(--muted)"></i>
+            </div>
+          </div>
+
+          <!-- About Foundation & Tools -->
+          <div class="settings-card-group">
+            <div class="settings-group-title"><i class="fas fa-landmark"></i> About Dream of Soul</div>
+            <div class="settings-row-item">
+              <div class="settings-info-text">
+                <div class="settings-main-label">Foundation Type</div>
+                <div class="settings-sub-label">Section 8 Non-Profit (CIN: U88900WR2026NPL292771)</div>
+              </div>
+            </div>
+            <div class="settings-row-item">
+              <div class="settings-info-text">
+                <div class="settings-main-label">Location</div>
+                <div class="settings-sub-label">Siliguri, West Bengal, India</div>
+              </div>
+            </div>
+            <div class="settings-row-item" onclick="openContactEmail('General Partnership')">
+              <div class="settings-info-text">
+                <div class="settings-main-label">Contact Email</div>
+                <div class="settings-sub-label">hello@dreamofsoul.com</div>
+              </div>
+              <i class="fas fa-envelope" style="color:var(--gold)"></i>
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+    <!-- Bottom Navigation Bar (5 Active Tabs) -->
+    <nav class="bottom-nav-bar" aria-label="Bottom Tabs Navigation">
+      <button class="nav-tab-btn active" data-tab="explore">
+        <i class="fas fa-home"></i>
+        <span data-i18n="tabExplore">Explore</span>
+      </button>
+      <button class="nav-tab-btn" data-tab="analyze">
+        <i class="fas fa-sliders-h"></i>
+        <span data-i18n="tabAnalyze">Analyze</span>
+        <span class="badge-dot"></span>
+      </button>
+      <button class="nav-tab-btn" data-tab="report">
+        <i class="fas fa-file-invoice"></i>
+        <span data-i18n="tabReport">Report</span>
+      </button>
+      <button class="nav-tab-btn" data-tab="advisor">
+        <i class="fas fa-comment-dots"></i>
+        <span data-i18n="tabAdvisor">AI Advisor</span>
+      </button>
+      <button class="nav-tab-btn" data-tab="settings">
+        <i class="fas fa-cog"></i>
+        <span data-i18n="tabSettings">Settings</span>
+      </button>
+    </nav>
+
+    <!-- Bottom Sheet Modal: Indian Languages Picker -->
+    <div class="modal-overlay-backdrop" id="lang-sheet-backdrop" onclick="closeLangSheet()">
+      <div class="bottom-sheet-content" onclick="event.stopPropagation()">
+        <div class="sheet-grabber-bar"></div>
+        <div class="sheet-header-row">
+          <div class="sheet-title-text"><i class="fas fa-language" style="color:var(--gold);margin-right:6px"></i> Select Language (भारतीय भाषाएं)</div>
+          <button class="sheet-close-btn" onclick="closeLangSheet()"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="sheet-scroll-body">
+          <div class="lang-select-grid" id="lang-select-grid">
+            <!-- Populated via app.js with all 22 Indian Languages -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Toast Notification -->
+    <div class="mobile-toast-popup" id="mobile-toast">
+      <i class="fas fa-check-circle"></i>
+      <span id="mobile-toast-text">Notification</span>
+    </div>
+
+  </div><!-- end .mobile-app-shell -->
+
+</div><!-- end .app-host-container -->
+
+<!-- App Logic -->
+<script src="./app.js"></script>
+
+<script>
+// Sample preview switcher helper
+function showPreviewTab(tabIndex, btn) {
+  document.querySelectorAll('.prev-tab-chip').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  
+  const card = document.getElementById('preview-display-card');
+  if (!card) return;
+  
+  if (tabIndex === 0) {
+    card.innerHTML = `
+      <div style="font-size:11px;font-weight:700;color:var(--gold-dk);text-transform:uppercase;margin-bottom:8px;">Module 01: Product Opportunity Score (Madhubani Cushion Cover)</div>
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--light-border);"><span style="font-size:13px;font-weight:600;">Global Demand Score</span><strong style="color:var(--gold-dk);font-family:'JetBrains Mono',monospace;">88/100</strong></div>
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--light-border);"><span style="font-size:13px;font-weight:600;">Export Potential</span><strong style="color:var(--sky);font-family:'JetBrains Mono',monospace;">92/100</strong></div>
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--light-border);"><span style="font-size:13px;font-weight:600;">Scalability Index</span><strong style="color:var(--violet);font-family:'JetBrains Mono',monospace;">76/100</strong></div>
+      <div style="display:flex;align-items:center;justify-content:space-between;padding:8px 0;"><span style="font-size:13px;font-weight:600;">Competition Intensity</span><strong style="color:var(--green);font-family:'JetBrains Mono',monospace;">52/100 (Low)</strong></div>
+    `;
+  } else if (tabIndex === 1) {
+    card.innerHTML = `
+      <div style="font-size:11px;font-weight:700;color:var(--gold-dk);text-transform:uppercase;margin-bottom:8px;">Module 03: Ranked Marketplace Channels</div>
+      <div style="display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--light-border);"><span>1. Amazon Karigar</span><strong style="color:var(--green)">92% Match (High)</strong></div>
+      <div style="display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--light-border);"><span>2. Etsy Global Store</span><strong style="color:var(--green)">88% Match (High)</strong></div>
+      <div style="display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--light-border);"><span>3. GeM Portal (B2G)</span><strong style="color:var(--gold-dk)">84% Match (Medium)</strong></div>
+      <div style="display:flex;justify-content:space-between;padding:7px 0;"><span>4. ONDC Network</span><strong style="color:var(--gold-dk)">80% Match (Medium)</strong></div>
+    `;
+  } else if (tabIndex === 2) {
+    card.innerHTML = `
+      <div style="font-size:11px;font-weight:700;color:var(--gold-dk);text-transform:uppercase;margin-bottom:8px;">Module 07: Pricing Ladder Benchmarks</div>
+      <div style="display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--light-border);"><span>Local Haat</span><strong style="font-family:'JetBrains Mono',monospace">₹250</strong></div>
+      <div style="display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--light-border);"><span>Domestic Retail</span><strong style="font-family:'JetBrains Mono',monospace">₹599</strong></div>
+      <div style="display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--light-border);"><span>Amazon FBA</span><strong style="color:var(--gold-dk);font-family:'JetBrains Mono',monospace">₹899</strong></div>
+      <div style="display:flex;justify-content:space-between;padding:7px 0;"><span>Etsy US / EU Export</span><strong style="color:var(--green);font-family:'JetBrains Mono',monospace">$34 (~₹2,850)</strong></div>
+    `;
+  } else if (tabIndex === 3) {
+    card.innerHTML = `
+      <div style="font-size:11px;font-weight:700;color:var(--gold-dk);text-transform:uppercase;margin-bottom:8px;">Module 11: Export Country Opportunities</div>
+      <div style="display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--light-border);"><span>🇺🇸 United States</span><strong style="color:var(--gold-dk)">$35–$65 / piece</strong></div>
+      <div style="display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--light-border);"><span>🇬🇧 United Kingdom</span><strong style="color:var(--gold-dk)">£26–£48 / piece</strong></div>
+      <div style="display:flex;justify-content:space-between;padding:7px 0;"><span>🇦🇪 United Arab Emirates</span><strong style="color:var(--gold-dk)">AED 120–190</strong></div>
+    `;
+  }
+}
+</script>
+
+</body>
+</html>
