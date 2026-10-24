@@ -1,5 +1,5 @@
-// Service Worker for Market Navigator™ Mobile App
-const CACHE_NAME = 'market-nav-v1';
+// Service Worker for AI For Artisans Mobile App
+const CACHE_NAME = 'ai-for-artisans-v1';
 const ASSETS = [
   './',
   './index.html',

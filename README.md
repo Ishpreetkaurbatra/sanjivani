@@ -1,4 +1,4 @@
-# Market Navigator™ — Mobile App
+# AI For Artisans — Mobile App
 **Free AI Market Intelligence for Indian Artisans & MSMEs | Dream of Soul Foundation**
 
 A mobile-first web app and installable Progressive Web App (PWA) delivering consulting-grade market intelligence across 14 modules for India's artisan collectives, SHGs, and rural MSMEs.

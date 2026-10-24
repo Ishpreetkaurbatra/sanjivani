@@ -1,5 +1,5 @@
 /**
- * Market Navigator™ Mobile App Engine
+ * AI For Artisans Mobile App Engine
  * Dream of Soul Foundation
  * Strictly Solid Colors — Working Gemini AI Integration — 22 Indian Languages
  */
@@ -109,7 +109,7 @@ const I18N = {
     district: "District",
     bizType: "Business Type",
     regStatus: "Registration Status",
-    aiAdvisorGreeting: "Namaste! I am your Market Navigator AI Advisor powered by Dream of Soul Foundation. Ask me anything about export readiness, GeM portal, artisan subsidies, pricing, or marketplace listings!",
+    aiAdvisorGreeting: "Namaste! I am your AI For Artisans Advisor powered by Dream of Soul Foundation. Ask me anything about export readiness, GeM portal, artisan subsidies, pricing, or marketplace listings!",
     chatPlaceholder: "Ask anything about selling your craft...",
     downloadPdf: "Download PDF",
     shareReport: "Share on WhatsApp",
@@ -1399,8 +1399,8 @@ function renderActionCenter() {
 
 function openContactEmail(subject) {
   const email = 'hello@dreamofsoul.com';
-  const sub = encodeURIComponent(`Market Navigator Inquiry: ${subject}`);
-  const body = encodeURIComponent(`Hello Dream of Soul Team,\n\nI have generated a Market Navigator Report for "${AppState.product.name}" and would like assistance with ${subject}.\n\nThank you.`);
+  const sub = encodeURIComponent(`AI For Artisans Inquiry: ${subject}`);
+  const body = encodeURIComponent(`Hello Dream of Soul Team,\n\nI have generated an AI For Artisans Report for "${AppState.product.name}" and would like assistance with ${subject}.\n\nThank you.`);
   window.open(`mailto:${email}?subject=${sub}&body=${body}`);
 }
 
@@ -1441,7 +1441,7 @@ async function handleChatSubmit() {
   try {
     const p = AppState.product;
     const b = AppState.business;
-    const prompt = `You are the Market Navigator AI Assistant for Dream of Soul Foundation, assisting Indian artisan ${b.name || 'User'} regarding "${p.name || 'handcrafted goods'}".
+    const prompt = `You are the AI For Artisans Advisor for Dream of Soul Foundation, assisting Indian artisan ${b.name || 'User'} regarding "${p.name || 'handcrafted goods'}".
 User question: "${userText}".
 Provide a concise, highly practical, supportive answer with specific next steps in ${INDIAN_LANGUAGES.find(l => l.code === AppState.currentLang)?.eng || 'English'}. Include relevant Indian government schemes or marketplace specifics where applicable.`;
 
@@ -1496,7 +1496,7 @@ function exportReportPDF() {
 function shareOnWhatsApp() {
   const p = AppState.product;
   const sc = AppState.scores || { opportunity: 82 };
-  const text = encodeURIComponent(`I just generated an AI Market Intelligence Report for "${p.name || 'my product'}" on Dream of Soul's Market Navigator™! My Opportunity Score is ${sc.opportunity}/100 with export recommendations.\n\nGenerate your free report here: ${window.location.href}`);
+  const text = encodeURIComponent(`I just generated an AI Market Intelligence Report for "${p.name || 'my product'}" on Dream of Soul's AI For Artisans app! My Opportunity Score is ${sc.opportunity}/100 with export recommendations.\n\nGenerate your free report here: ${window.location.href}`);
   window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
 }
 
